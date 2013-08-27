@@ -44,6 +44,21 @@ elseif(DISTRIBUTION MATCHES "openSUSE.*")
   set(CPACK_RPM_POST_INSTALL_SCRIPT_FILE "${CMAKE_CURRENT_SOURCE_DIR}/postinst")
   set(CPACK_RPM_POST_UNINSTALL_SCRIPT_FILE "${CMAKE_CURRENT_SOURCE_DIR}/postrm")
 
+elseif(DISTRIBUTION STREQUAL "Fedora")
+
+  # Set Fedora-specific information (see http://www.cmake.org/Wiki/CMake:CPackPackageGenerators)
+  execute_process(COMMAND lsb_release -sr OUTPUT_VARIABLE RELEASE OUTPUT_STRIP_TRAILING_WHITESPACE)
+  set(CPACK_RPM_PACKAGE_ARCHITECTURE "noarch")
+  set(CPACK_PACKAGE_CONTACT "Michaël Zugaro")
+  set(CPACK_RPM_PACKAGE_GROUP "Science")
+  set(CPACK_RPM_PACKAGE_LICENSE "GPL")		
+  set(CPACK_RPM_PACKAGE_SUGGESTS "klusters, neuroscope, ndmanager")
+  set(CPACK_RPM_PACKAGE_URL "http://klusters.sourceforge.net")
+  set(CPACK_GENERATOR "RPM")
+  set(CPACK_PACKAGE_FILE_NAME ${CPACK_PACKAGE_NAME}-${CPACK_PACKAGE_VERSION}.fc${RELEASE}.${CPACK_RPM_PACKAGE_ARCHITECTURE})
+  set(CPACK_RPM_POST_INSTALL_SCRIPT_FILE "${CMAKE_CURRENT_SOURCE_DIR}/postinst")
+  set(CPACK_RPM_POST_UNINSTALL_SCRIPT_FILE "${CMAKE_CURRENT_SOURCE_DIR}/postrm")
+        
 endif()
 
 include(CPack)
