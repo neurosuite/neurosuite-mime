@@ -20,7 +20,7 @@ execute_process(COMMAND lsb_release -sc OUTPUT_VARIABLE RELEASE OUTPUT_STRIP_TRA
 # Set package name and type (deb vs rpm)
 if(DISTRIBUTION STREQUAL "Ubuntu")
 
-  # Set Debian-specific information (see http://www.cmake.org/Wiki/CMake:CPackPackageGenerators)
+  # Set Ubuntu-specific information (see http://www.cmake.org/Wiki/CMake:CPackPackageGenerators)
   set(CPACK_DEBIAN_PACKAGE_ARCHITECTURE "all")
   set(CPACK_DEBIAN_PACKAGE_MAINTAINER "Michaël Zugaro")
   set(CPACK_DEBIAN_PACKAGE_SECTION "Science")
@@ -29,6 +29,20 @@ if(DISTRIBUTION STREQUAL "Ubuntu")
   set(CPACK_GENERATOR "DEB")
   set(CPACK_PACKAGE_FILE_NAME ${CPACK_PACKAGE_NAME}_${CPACK_PACKAGE_VERSION}-${RELEASE}_${CPACK_DEBIAN_PACKAGE_ARCHITECTURE})
   set(CPACK_DEBIAN_PACKAGE_CONTROL_EXTRA "${CMAKE_CURRENT_SOURCE_DIR}/postinst;${CMAKE_CURRENT_SOURCE_DIR}/postrm;" )
+
+# >>> TEMPLATE CODE FOR ADDITIONAL DEBIAN-LIKE DISTRIBUTIONS <<<
+
+#elseif(DISTRIBUTION STREQUAL "Ubuntu")
+#
+#  # Set Ubuntu-specific information (see http://www.cmake.org/Wiki/CMake:CPackPackageGenerators)
+#  set(CPACK_DEBIAN_PACKAGE_ARCHITECTURE "all")
+#  set(CPACK_DEBIAN_PACKAGE_MAINTAINER "Michaël Zugaro")
+#  set(CPACK_DEBIAN_PACKAGE_SECTION "Science")
+#  set(CPACK_DEBIAN_PACKAGE_RECOMMENDS "klusters, neuroscope, ndmanager")
+#  set(CPACK_DEBIAN_PACKAGE_HOMEPAGE "http://klusters.sourceforge.net")
+#  set(CPACK_GENERATOR "DEB")
+#  set(CPACK_DEBIAN_PACKAGE_CONTROL_EXTRA "${CMAKE_CURRENT_SOURCE_DIR}/postinst;${CMAKE_CURRENT_SOURCE_DIR}/postrm;" )
+#  set(CPACK_PACKAGE_FILE_NAME ${CPACK_PACKAGE_NAME}_${CPACK_PACKAGE_VERSION}-${RELEASE}_${CPACK_DEBIAN_PACKAGE_ARCHITECTURE})
 
 elseif(DISTRIBUTION MATCHES "openSUSE.*")
 
@@ -59,6 +73,22 @@ elseif(DISTRIBUTION STREQUAL "Fedora")
   set(CPACK_RPM_POST_INSTALL_SCRIPT_FILE "${CMAKE_CURRENT_SOURCE_DIR}/postinst")
   set(CPACK_RPM_POST_UNINSTALL_SCRIPT_FILE "${CMAKE_CURRENT_SOURCE_DIR}/postrm")
         
+# >>> TEMPLATE CODE FOR ADDITIONAL REDHAT-LIKE DISTRIBUTIONS <<<
+
+#elseif(DISTRIBUTION MATCHES "openSUSE.*")
+#
+#  # Set openSUSE-specific information (see http://www.cmake.org/Wiki/CMake:CPackPackageGenerators)
+#  set(CPACK_RPM_PACKAGE_ARCHITECTURE "noarch")
+#  set(CPACK_PACKAGE_CONTACT "Michaël Zugaro")
+#  set(CPACK_RPM_PACKAGE_GROUP "Science")
+#  set(CPACK_RPM_PACKAGE_LICENSE "GPL")		
+#  set(CPACK_RPM_PACKAGE_SUGGESTS "klusters, neuroscope, ndmanager")
+#  set(CPACK_RPM_PACKAGE_URL "http://klusters.sourceforge.net")
+#  set(CPACK_GENERATOR "RPM")
+#  set(CPACK_RPM_POST_INSTALL_SCRIPT_FILE "${CMAKE_CURRENT_SOURCE_DIR}/postinst")
+#  set(CPACK_RPM_POST_UNINSTALL_SCRIPT_FILE "${CMAKE_CURRENT_SOURCE_DIR}/postrm")
+#  set(CPACK_PACKAGE_FILE_NAME ${CPACK_PACKAGE_NAME}-${CPACK_PACKAGE_VERSION}-${RELEASE}.${CPACK_RPM_PACKAGE_ARCHITECTURE})
+
 endif()
 
 include(CPack)
