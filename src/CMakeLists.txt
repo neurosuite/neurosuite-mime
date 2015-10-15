@@ -1,5 +1,3 @@
-project(nphys-data-src)
-
 file(GLOB files "${CMAKE_CURRENT_SOURCE_DIR}/16x16/*.png")
 install(FILES ${files} DESTINATION share/icons/hicolor/16x16/mimetypes/)
 
@@ -14,5 +12,5 @@ install(FILES ${files} DESTINATION share/icons/hicolor/48x48/mimetypes/)
 
 file(GLOB files "${CMAKE_CURRENT_SOURCE_DIR}/64x64/*.png")
 install(FILES ${files} DESTINATION share/icons/hicolor/64x64/mimetypes/)
- 
-install(FILES nphys-data.xml DESTINATION share/mime/packages/)
+
+install(FILES neurosuite-mime.xml DESTINATION share/mime/packages/)

@@ -2,7 +2,7 @@
 <mime-info xmlns='http://www.freedesktop.org/standards/shared-mime-info'>
 
 	<!-- 	Multichannel continuous signals -->
-	
+
 	<mime-type type="application/nphys-dat">
 		<comment>wideband data</comment>
 		<comment xml:lang="fr">données large bande</comment>
@@ -25,7 +25,7 @@
 	</mime-type>
 
 	<!-- 	Spikes -->
-	
+
 	<mime-type type="application/nphys-spk">
 		<comment>spike waveform file</comment>
 		<comment xml:lang="fr">fichier de formes de potentiels d'action</comment>
@@ -48,15 +48,15 @@
 	</mime-type>
 
 	<!-- 	Events -->
-	
+
 	<mime-type type="application/nphys-evt">
 		<comment>event file</comment>
 		<comment xml:lang="fr">fichier d'événements</comment>
 		<glob pattern="*.evt"/>
 	</mime-type>
-	
+
 	<!-- 	Tracking -->
-	
+
 	<mime-type type="application/nphys-spots">
 		<comment>spots file</comment>
 		<comment xml:lang="fr">fichier de points lumineux</comment>
@@ -72,9 +72,9 @@
 		<comment xml:lang="fr">fichier de roue</comment>
 		<glob pattern="*.whl"/>
 	</mime-type>
-	
+
 	<!-- 	Preprocessing -->
-	
+
 	<mime-type type="application/nphys-sts">
 		<comment>spots timestamp file</comment>
 		<comment xml:lang="fr">fichier de temps des points lumineux</comment>
@@ -90,5 +90,5 @@
 		<comment xml:lang="fr">fichier de redémarrage d'acquisition (pour systèmes Neuralynx)</comment>
 		<glob pattern="*.restart"/>
 	</mime-type>
-	
+
 </mime-info>
